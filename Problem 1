@@ -1,0 +1,85 @@
+Define 
+\[
+f(x):=\begin{cases}
+\exp\left(-\frac{1}{x^{2}}\right) & \text{if \ensuremath{x\neq0}},\\
+0 & \text{otherwise.}
+\end{cases}
+\]
+Prove the following theorem.\\
+\\
+\textbf{Theorem: }The only point at which 
+\[
+f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^{n}
+\]
+is at $x=0$. \\
+
+\begin{proof}
+    Let, 
+    \begin{equation*}
+        q(x)=\sum_{i=0}^{n}a_ix^i
+    \end{equation*}
+    with ${a_i,x}\in\mathbb{R}$ be an arbitrary polynomial. Then,
+    \begin{equation*}
+        q\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right)=e^{-\frac{1}{x^{2}}}\sum_{i=0}^{n}a_i\left(\frac{1}{x}\right)^i.
+    \end{equation*}
+    and if for each $i\in\mathbb{N},$ 
+    \[
+        \lim_{x\to0}\frac{\exp\left(-\frac{1}{x^{2}}\right)}{x^{n}}=0
+    \]
+    then clearly,
+    \[
+        \lim_{x\to0}q\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right)=0
+    \]
+    must be true. But because,
+    \begin{equation*}
+    \begin{aligned}
+        e^b&=\sum_{n=0}^{\infty}\frac{b^n}{n!}\\
+        &\geq\frac{b^n}{n!}
+    \end{aligned}
+    \end{equation*}
+    we see that 
+    \[e^{\frac{1}{x^2}}\geq\frac{1}{x^{2n}n!}.\]
+    Simple algebra yields, 
+    \[\frac{\exp\left(-\frac{1}{x^2}\right)}{x^n}\leq x^n n!.\] We then implement the squeeze theorem, 
+    \[0\leq\left\vert\frac{\exp\left(-\frac{1}{x^2}\right)}{x^n}\right\vert\leq x^nn!\] Then because $\lim_{x\to0}x^n n!=0$ for all $n\in\mathbb{N}$, 
+    \[
+        \lim_{x\to0}\frac{\exp\left(-\frac{1}{x^{2}}\right)}{x^{n}}=0
+    \]
+    for all $n\in\mathbb{N}$. Which means that 
+    \[
+    \lim_{x\to0}q\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right)=0.
+    \]
+    Let us establish a base case. For $x\neq0$
+    \[f^{\prime}(x)=\frac{2\exp\left(-\frac{1}{x^2}\right)}{x^3}\] then with $q_1=2x^3$, 
+    \[
+    f^{(1)}(x)=q_{1}\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right). 
+    \] Assume that there exists some $n\in\mathbb{N}$ such that 
+    \[
+    f^{(n)}(x)=q_{n}\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right).
+    \] We seek to demonstrate the $n+1$ case. 
+    To do this, see that
+    \begin{equation*}
+        \begin{aligned}
+            f^{(n+1)}(x)&=\frac{d}{dx}f^n(x)\\
+            &=\left[\frac{d}{dx}\left[q_{n}\left(\frac{1}{x}\right)\right]-\frac{2}{x^3}q_{n}\left(\frac{1}{x}\right)\right]\exp\left(-\frac{1}{x^{2}}\right)\\
+            &=q_{n+1}\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right)
+        \end{aligned}
+    \end{equation*}
+    This means that $f$ has derivatives of all orders at every point $x\neq0$. From above, see that for some polynomial $q_1$,
+    \begin{equation*}
+        \begin{aligned}
+            \lim_{x\to0}f^{\prime}(x)&=\lim_{x\to0}q_{1}\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right)\\
+            &=0.
+        \end{aligned}
+    \end{equation*}
+    Thus $f^{(1)}(0)=0$ and we assume that for some $n\in\mathbb{N}$, $f^{(n)}(0)=0$. We seek to demonstrate that this implies the $n+1$ case. We know from above that with $x\neq0$, there exists a polynomial $q_{n+1}$ such that
+    \[
+    f^{(n+1)}(x)=q_{n+1}\left(\frac{1}{x}\right)\exp\left(-\frac{1}{x^{2}}\right).
+    \]
+    For this as well, we arrive at $f^{(n+1)}(0)=0$ and conclude that for every $n\in\mathbb{N},$ $f^{(n)}(0)=0$. Observe that 
+    \[
+    f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^{n}
+    \]
+    only when $f(x)=0$ which only occurs when $x=0$
+    
+\end{proof}
